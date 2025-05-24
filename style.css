@@ -1,1806 +1,1442 @@
-/* Asosiy sahifa uslublari boshlanishi */
+/* Global Styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
+  background-color: #f4f6f8; /* Умумий фон */
+  color: #333;
+  line-height: 1.6;
+  font-size: 14px;
 }
 
+.container-custom {
+  width: 1140px;
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Navbar (image_190e73.png дизайнига мос) */
 .navbar {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px 75px;
-    background-color: #15202B;
-    color: white;
+  background-color: #121a2b;
+  padding: 0;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-    /* Sizning logo uslublaringiz */
-    font-size: 24px; /* Misol uchun */
-    font-weight: bold;
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1140px;
+  max-width: 95%;
+  margin: 0 auto;
+  height: 64px;
+  padding: 0 15px;
+  position: relative;
 }
 
+.nav-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.site-logo-newcomer {
+  /* Сизнинг image 2.png логотипингиз учун янги стиль */
+  height: 32px;
+  width: auto; /* Кенгликни автоматик қилиб, пропорцияни сақлаймиз */
+  max-height: 32px; /* Максимал баландлик */
+  border-radius: 4px; /* Агар логотипингиз тўртбурчак бўлса, озгина юмшоқлик учун */
+  /* object-fit: cover; -- агар керак бўлса */
+}
+
+.logo-dot-newcomer {
+  /* Нуқта учун */
+  width: 7px;
+  height: 7px;
+  background-color: #00a8ff;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
 .nav-links a {
-    margin: 0 19px;
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    font-size: 20px;
-    transition: color 0.3s ease;
+  color: #abb2bf;
+  text-decoration: none;
+  margin: 0 18px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 4px;
+  transition: color 0.3s ease, border-bottom-color 0.3s ease;
+  border-bottom: 2px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
-
 .nav-links a:hover {
-    color: #0099ff;
+  color: #fff;
+  border-bottom-color: #00a8ff;
+}
+.nav-links a.active {
+  color: #fff;
+  font-weight: 600;
+  border-bottom-color: #00a8ff;
 }
 
-/* .login-link-mobile ni PC (desktop) da yashirish */
+.login-btn.desktop-login {
+  /* Сизнинг мавжуд кнопкангиз учун янгиланган стиль */
+  background-color: #00a8ff;
+  color: #fff;
+  border: none;
+  padding: 9px 22px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+}
+.login-btn.desktop-login:hover {
+  background-color: #008bcc;
+}
 .nav-links a.login-link-mobile {
-    display: none; /* Kompyuter versiyasida sukut bo'yicha yashirin */
-}
-
-.login-btn { /* Bu .desktop-login tugmasi uchun asosiy uslub */
-    background-color: #0099ff;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 7px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.login-btn:hover {
-    background-color: #007acc;
+  display: none;
 }
 
 .hamburger-menu {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-    z-index: 1001; /* nav-links dan yuqorida bo'lishi uchun */
-    order: 3; /* Flexbox tartibi uchun, agar kerak bo'lsa */
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 5px;
 }
-
 .hamburger-menu .material-symbols-outlined {
-    display: block;
-    transition: transform 0.3s ease;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-
+/* Hero Section (index.html учун - сизнинг кодингиздан) */
 .hero {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    padding: 75px;
-    background-color: #15202B;
-    color: white;
-    min-height: calc(100vh - 80px); /* Navbar balandligini hisobga olgan holda */
-    box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 75px;
+  background-color: #15202b;
+  color: white;
+  min-height: calc(100vh - 64px); /* Navbar баландлигига мослаш */
+  box-sizing: border-box;
 }
-
 .hero-text {
-    max-width: 625px;
+  max-width: 625px;
 }
-
 .hero-text h1 {
-    font-size: 40px; /* Katta ekranlar uchun */
-    line-height: 1.4;
-    font-weight: 700;
-}
-
+  font-size: 40px;
+  line-height: 1.4;
+  font-weight: 700;
+  margin-bottom: 20px;
+} /* Added margin-bottom */
 .hero-text p {
-    color: #ccc;
-    margin-top: 25px;
-    line-height: 1.6;
-    font-size: 20px;
-}
-
+  color: #ccc;
+  margin-top: 0;
+  line-height: 1.6;
+  font-size: 18px;
+  margin-bottom: 25px;
+} /* Adjusted */
 .explore-btn {
-    margin-top: 25px;
-    padding: 15px 30px;
-    background-color: #0099ff;
-    border: none;
-    border-radius: 7px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  margin-top: 25px;
+  padding: 15px 30px;
+  background-color: #00a8ff; /* Navbar кнопкаси рангига мослаш */
+  border: none;
+  border-radius: 25px; /* Овал шакл */
+  color: white;
+  font-weight: bold;
+  font-size: 16px; /* Бироз кичикроқ */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
 }
-
 .explore-btn:hover {
-    background-color: #007acc;
+  background-color: #008bcc;
 }
-
 .users {
-    margin-top: 25px;
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    gap: 12px;
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  gap: 12px;
 }
-
-.container {
-    position: relative;
-    width: 80px;
-    height: 50px;
+.users .container {
+  position: relative;
+  width: 80px;
+  height: 50px;
 }
-
-.outer, .inner {
-    position: absolute;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid #15202B; /* Orqa fon bilan bir xil */
+.users .outer,
+.users .inner {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  overflow: hidden;
 }
-
-.outer {
-    top: 0;
-    left: 0;
-    z-index: 1;
+.users .outer {
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
-
-.inner {
-    top: 0;
-    left: 25px;
-    z-index: 2;
+.users .inner {
+  top: 0;
+  left: 25px;
+  z-index: 2;
 }
-
-.outer img, .inner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.users .outer img,
+.users .inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-
 .hero-graphic {
-    position: relative;
-    width: 500px; /* Asosiy o'lcham */
-    height: 500px; /* Asosiy o'lcham */
-    margin-top: 50px; /* Desktop uchun */
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin-top: 50px;
+}
+.hero-graphic .circle {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero-graphic .tool {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.hero-graphic .tool img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.hero-graphic .top {
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.hero-graphic .top-right {
+  top: 20%;
+  right: -25px;
+  transform: translateY(-50%) translateX(25%);
+}
+.hero-graphic .bottom-right {
+  bottom: 20%;
+  right: -25px;
+  transform: translateY(50%) translateX(25%);
+}
+.hero-graphic .bottom {
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.hero-graphic .bottom-left {
+  bottom: 20%;
+  left: -25px;
+  transform: translateY(50%) translateX(-25%);
+}
+.hero-graphic .top-left {
+  top: 20%;
+  left: -25px;
+  transform: translateY(-50%) translateX(-25%);
+}
+.hero-graphic .center-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.hero-graphic .center-logo img {
+  width: 100px;
 }
 
-.circle {
-    width: 400px; /* Asosiy o'lcham */
-    height: 400px; /* Asosiy o'lcham */
-    border-radius: 50%;
-    position: relative; /* Ichidagi elementlarni joylashtirish uchun */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* border: 10px solid rgba(0, 153, 255, 0.2); Optional: if you want a visible circle border */
+/* Features Section (index.html учун - сизнинг кодингиздан) */
+.features {
+  width: 100%;
+  padding: 75px 0;
+  background-color: #fff; /* index.html да фон оқ эди */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.features > div {
+  width: 1140px;
+  max-width: 90%;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.features > div > div {
+  width: 360px;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+.numbers-40 {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.5;
+  color: rgba(255, 51, 102, 1);
+}
+.numbers-100 {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.5;
+  color: rgba(0, 134, 214, 1);
+}
+.numbers-50 {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.5;
+  color: rgba(43, 160, 147, 1);
+}
+.tools {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.5;
+  color: rgba(51, 62, 68, 1);
+  margin-top: 15px;
+}
+.tools-info {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.55;
+  text-align: center;
+  color: rgba(71, 94, 105, 1);
+  margin-top: 10px;
+  min-height: 80px;
 }
 
-.tool {
-    position: absolute;
-    width: 60px; /* Asosiy o'lcham */
-    height: 60px; /* Asosiy o'lcham */
-    background-color: rgba(255,255,255,0.1); /* Orqa fonni ajratib turish uchun */
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px; /* Ikonka kichikroq bo'lishi uchun */
-}
-.tool img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.top { top: -30px; left: 50%; transform: translateX(-50%); }
-.top-right { top: 20%; right: -25px; transform: translateY(-50%) translateX(25%);} /* Adjusted for better positioning */
-.bottom-right { bottom: 20%; right: -25px; transform: translateY(50%) translateX(25%);} /* Adjusted */
-.bottom { bottom: -30px; left: 50%; transform: translateX(-50%); }
-.bottom-left { bottom: 20%; left: -25px; transform: translateY(50%) translateX(-25%);} /* Adjusted */
-.top-left { top: 20%; left: -25px; transform: translateY(-50%) translateX(-25%);} /* Adjusted */
-
-.center-logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.center-logo img {
-    width: 100px; /* Asosiy o'lcham */
-}
-
-.features{
-    width: 100%;
-    padding: 75px 0; /* Yuqori va pastki padding ko'paytirildi */
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.features > div{
-    width: 1140px;
-    max-width: 90%;
-    background-color: white;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start; /* Elementlarni yuqoridan tenglashtirish */
-    flex-wrap: wrap;
-    gap: 30px; /* Oradagi masofa ko'paytirildi */
-}
-
-.features > div > div{
-    width: 360px; /* Blok kengligi biroz o'zgartirildi */
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 20px; /* Ichki padding qo'shildi */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Yengil soya */
-    border-radius: 8px; /* Chegaralari yumaloqlandi */
-}
-
-.numbers-40{
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 1.5;
-    color: rgba(255, 51, 102, 1);
-}
-.numbers-100{
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 1.5;
-    letter-spacing: 0;
-    color: rgba(0, 134, 214, 1);
-}
-.numbers-50{
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 1.5;
-    color: rgba(43, 160, 147, 1);
-}
-.tools{
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 24px; /* Biroz kattalashtirildi */
-    line-height: 1.5;
-    letter-spacing: 0;
-    color:rgba(51, 62, 68, 1);
-    margin-top: 15px; /* Masofa ko'paytirildi */
-}
-.tools-info{
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.55;
-    letter-spacing: 0;
-    text-align: center;
-    color:rgba(71, 94, 105, 1);
-    margin-top: 10px;
-    min-height: 80px; /* Bir xil balandlik uchun */
-}
-
+/* Slider Container (index.html учун - сизнинг кодингиздан) */
 .slider-container {
-    width: 100%;
-    overflow: hidden;
-    background-color: #f8f9fa; /* Slider foni o'zgartirildi */
-    padding: 75px 0; /* Yuqori va pastki padding ko'paytirildi */
-    box-sizing: border-box;
-    position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #f8f9fa;
+  padding: 75px 0;
+  box-sizing: border-box;
+  position: relative;
 }
-
 .slider-title {
-    font-family: "Poppins", sans-serif;
-    font-size: 36px;
-    font-weight: 600;
-    color: black;
-    text-align: center;
-    margin-bottom: 10px;
+  font-size: 36px;
+  font-weight: 600;
+  color: #1e293b; /* Дизайнга мос ранг */
+  text-align: center;
+  margin-bottom: 10px;
 }
-
 .slider-subtitle {
-    font-family: "Poppins", sans-serif;
-    font-size: 18px;
-    color: #555; /* Rangi o'zgartirildi */
-    text-align: center;
-    margin-bottom: 40px; /* Masofa ko'paytirildi */
-    max-width: 700px; /* Subtitle kengligi cheklandi */
-    margin-left: auto;
-    margin-right: auto;
+  font-size: 18px;
+  color: #64748b; /* Дизайнга мос ранг */
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 .slider-track {
-    display: flex;
-    /* 14 ta element uchun: (karta kengligi + oraliq) * 14 */
-    /* Agar 7 ta dublikat qilinsa, unda original * 2 */
-    width: calc( (320px + 20px) * 14 ); /* 7 ta original + 7 ta kopiya */
-    animation: scroll 60s linear infinite;
+  display: flex;
+  width: calc((320px + 20px) * 12);
+  animation: scroll 60s linear infinite;
+} /* 6 та карточка * 2 */
+.slider-content {
+  display: flex;
+  gap: 20px;
 }
-
-.slider-content { /* Bu aslida slider-track ichidagi individual kartalar to'plamini anglatadi */
-    display: flex;
-    gap: 20px;
+.popular-tool {
+  width: 320px;
+  min-height: 430px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.07);
+  text-align: center;
+  padding: 20px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.popular-tool, .popular-tool1 { /* .popular-tool1 uchun alohida klass shart emas, agar bir xil bo'lsa */
-    width: 320px;
-    height: 450px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Soya kuchaytirildi */
-    text-align: center;
-    padding: 20px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-sizing: border-box;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.popular-tool:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
 }
-
-.popular-tool:hover, .popular-tool1:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+.remonte1,
+.remonte2 {
+  width: 100%;
+  height: 180px;
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 15px;
+  background-color: #eee;
 }
-
-/* .popular-tool1 uchun alohida margin-left kerak emas, agar .slider-content da gap ishlatilsa */
-/* .popular-tool1{
-    margin-left: 20px;
-} */
-
-
-.remonte1, .remonte2, .remontee1 { /* Umumiy klassdan foydalanish yaxshiroq */
-    width: 100%;
-    height: 180px;
-    border-radius: 5px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-bottom: 15px;
+.popular-tool h1 {
+  font-size: 20px;
+  color: #1e293b;
+  margin: 10px 0 5px;
+  font-weight: 600;
 }
-
-.remonte1 { /* Misol uchun */
-    background-image: url("remonte.png");
-    background-color: #eee; /* Fallback */
+.popular-tool p {
+  font-size: 14px; /* Бироз кичикроқ */
+  color: #475569;
+  margin-bottom: 15px;
+  flex-grow: 1;
+  line-height: 1.6;
 }
-
-.remonte2 { /* Misol uchun */
-    background-image: url("master.png");
-    background-color: #ddd; /* Fallback */
+.popular-tool button {
+  background-color: #00a8ff;
+  color: white;
+  padding: 10px 18px; /* Бироз кичикроқ */
+  border: none;
+  border-radius: 6px;
+  font-size: 14px; /* Бироз кичикроқ */
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: center;
+  width: fit-content;
+  text-transform: uppercase;
 }
-.remontee1 { /* Bu klass nomi takrorlanmoqda, remonte1 bilan bir xil */
-    background-image: url("remonte.png"); /* Agar boshqa rasm bo'lsa, nomini o'zgartiring */
-    background-color: #eee;
+.popular-tool button:hover {
+  background-color: #008bcc;
 }
-
-
-.popular-tool h1, .popular-tool1 h1 {
-    font-family: "Poppins", sans-serif;
-    font-size: 20px;
-    color: #000;
-    margin: 10px 0 5px;
-    font-weight: 600;
-}
-
-.popular-tool p, .popular-tool1 p {
-    font-family: "Poppins", sans-serif;
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 15px;
-    flex-grow: 1; /* Matn qismi kengayishi uchun */
-    line-height: 1.5;
-}
-
-.popular-tool button, .popular-tool1 button {
-    background-color: #0099ff;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: center; /* O'rtaga joylash */
-    width: fit-content; /* Kengligi kontentga mos */
-}
-
-.popular-tool button:hover, .popular-tool1 button:hover {
-    background-color: #007acc;
-}
-
 @keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        /* (karta kengligi + oraliq) * (elementlar soni / 2) */
-        transform: translateX(calc( (320px + 20px) * -7 )); /* 7 ta original element siljiydi */
-    }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc((320px + 20px) * -6));
+  }
+} /* 6 та карточка учун */
+
+/* Newcomer Banner Section (services.html учун) */
+.newcomer-banner {
+  background-color: #121a2b;
+  color: #fff;
+  padding: 50px 20px 70px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.banner-bg-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  pointer-events: none;
+}
+.graph-element {
+  width: 28%;
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.25;
+}
+.graph-element.left {
+  align-items: flex-start;
+  transform: translateX(-30%);
+}
+.graph-element.right {
+  align-items: flex-end;
+  transform: translateX(30%);
+}
+.graph-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 168, 255, 0.3);
+}
+.graph-placeholder {
+  width: 100%;
+  height: 70px;
+}
+.graph-placeholder svg {
+  width: 100%;
+  height: 100%;
+}
+.banner-content-newcomer {
+  position: relative;
+  z-index: 2;
+  background-color: rgba(24, 35, 57, 0.85);
+  display: inline-block;
+  padding: 30px 50px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+.newcomer-banner h1 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #fff;
+}
+.newcomer-banner p {
+  font-size: 15px;
+  color: #bdc4d4;
+  margin-bottom: 25px;
+}
+.explore-now-banner-btn {
+  background-color: #00a8ff;
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+}
+.explore-now-banner-btn:hover {
+  background-color: #008bcc;
+  transform: translateY(-2px);
 }
 
-/* Chatbot uslublari */
-body.show-chatbot {
-    /* Agar kerak bo'lsa: overflow: hidden; */
+/* Tools Showcase Section (services.html учун) */
+.tools-showcase-section {
+  padding: 50px 0;
+  background-color: #f4f6f8;
+}
+.tools-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.showcase-tool-card {
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+.showcase-tool-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+.card-top-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.showcase-tool-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-right: 12px;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+.showcase-tool-header {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.showcase-tool-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+.showcase-tool-tag {
+  font-size: 9px;
+  font-weight: 500;
+  padding: 3px 7px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  line-height: 1;
+}
+.tag-free {
+  background-color: #dcfce7;
+  color: #16a34a;
+  border: 1px solid #a7f3d0;
+}
+.tag-premium {
+  background-color: #fef3c7;
+  color: #d97706;
+  border: 1px solid #fde68a;
+}
+.tag-free30day {
+  background-color: #dbeafe;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+}
+.showcase-tool-description {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+.showcase-tool-categories {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+.showcase-category {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 0;
+}
+.showcase-category.software,
+.showcase-category.security,
+.showcase-category.data,
+.showcase-category.networking,
+.showcase-category.support,
+.showcase-category.os,
+.showcase-category.maintenance,
+.showcase-category.connectivity,
+.showcase-category.design {
+  color: #2563eb;
+} /* Blue */
+.showcase-category.hardware-cat,
+.showcase-category.performance,
+.showcase-category.laptop,
+.showcase-category.repair,
+.showcase-category.custom-builds,
+.showcase-category.development {
+  color: #d97706;
+} /* Orange */
+
+/* Pagination Styles (services.html учун) */
+.pagination-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.pagination {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+.page-item .page-link {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 10px;
+  color: #475467;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 13px;
+  font-weight: 500;
+}
+.page-item .page-link:hover {
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+.page-item.active .page-link {
+  background-color: #eff6ff;
+  color: #2563eb;
+  font-weight: 600;
 }
 
-.chatbot-toggler {
-    position: fixed;
-    right: 40px;
-    bottom: 35px;
-    height: 50px;
-    width: 50px;
-    background: #724ae8;
-    color: #fff;
-    border-radius: 50%;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-
-.chatbot-toggler span {
-    position: absolute;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.chatbot-toggler span:first-child {
-    opacity: 1;
-    transform: rotate(0deg);
-}
-.chatbot-toggler span:last-child {
-    opacity: 0;
-    transform: rotate(-90deg);
-}
-
-body.show-chatbot .chatbot-toggler span:first-child {
-    opacity: 0;
-    transform: rotate(90deg);
-}
-body.show-chatbot .chatbot-toggler span:last-child {
-    opacity: 1;
-    transform: rotate(0deg);
-}
-
-.chatbot {
-    width: 420px;
-    position: fixed;
-    right: 40px;
-    bottom: 100px;
-    background: #ffffff;
-    border-radius: 15px;
-    overflow: hidden;
-    transform: scale(0.5);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
-    0 32px 64px -48px rgba(0, 0, 0, 0.5);
-    z-index: 999;
-}
-
-body.show-chatbot .chatbot {
-    transform: scale(1);
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.chatbot header {
-    background: #724ae8;
-    padding: 16px 0;
-    text-align: center;
-    position: relative;
-}
-
-.chatbot header h2 {
-    color: #fff;
-    font-size: 1.4rem;
-}
-
-.chatbot header span.close-chatbot-btn {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #fff;
-    cursor: pointer;
-    font-size: 1.8rem; /* Kattaroq qilib belgilandi */
-    display: none; /* Sukut bo'yicha yashirin, kichik ekranlarda ko'rinadi */
-}
-
-.chatbot .chatbox {
-    height: 510px;
-    overflow-y: auto;
-    padding: 30px 20px 100px; /* Pastki padding chat-input uchun joy qoldiradi */
-}
-
-.chatbox .chat {
-    display: flex;
-    list-style: none;
-}
-
-.chatbox .chat p {
-    padding: 12px 16px;
-    border-radius: 10px;
-    background: #724ae8;
-    color: #fff;
-    font-size: 0.95rem;
-    max-width: 75%;
-    word-wrap: break-word; /* Uzun so'zlar sindiriladi */
-}
-.chatbox .chat p.error {
-    background: #ff4d4d;
-    color: white;
-}
-
-.chatbox .incoming {
-    margin: 20px 0;
-    justify-content: flex-start; /* Yaxshiroq ko'rinish uchun */
-}
-.chatbox .incoming span { /* Bu Material Icon bo'lishi kerak */
-    height: 32px;
-    width: 32px;
-    background: #724ae8;
-    color: #fff;
-    text-align: center;
-    line-height: 32px; /* Vertikal o'rtaga */
-    border-radius: 4px;
-    margin: 0 10px 7px 0;
-    font-family: 'Material Symbols Outlined'; /* Agar icon font ishlatilsa */
-    align-self: flex-end; /* Pufakchaning pastiga */
-}
-.chatbox .incoming p {
-    background: #f2f2f2;
-    color: #000;
-    border-radius: 10px 10px 10px 0; /* Chapdan kelayotgan xabar shakli */
-}
-
-.chatbox .outgoing {
-    justify-content: flex-end;
-    margin: 20px 0;
-}
-.chatbox .outgoing p {
-    border-radius: 10px 10px 0 10px; /* O'ngdan chiqayotgan xabar shakli */
-    background: #724ae8;
-    color: #fff;
-}
-
-.chatbot .chat-input {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: #fff;
-    padding: 5px 20px;
-    border-top: 1px solid #ccc;
-    display: flex;
-    gap: 10px; /* Elementlar orasidagi masofa */
-    align-items: center; /* Vertikal o'rtaga */
-    height: 70px; /* Balandlik belgilandi */
-    box-sizing: border-box;
-}
-
-.chat-input textarea {
-    height: 45px; /* O'zgartirilgan balandlik */
-    width: 100%;
-    border: none;
-    outline: none;
-    font-size: 0.95rem;
-    resize: none;
-    padding: 12px 15px 12px 0; /* O'ng padding send-btn uchun joy qoldirmaydi */
-    background-color: transparent;
-    max-height: 150px; /* Kerak bo'lsa, ko'p qatorli matn uchun */
-    overflow-y: auto; /* Agar matn sig'masa scroll paydo bo'ladi */
-}
-
-.chat-input span#send-btn {
-    color: #724ae8;
-    align-self: center; /* Vertikal o'rtaga */
-    line-height: normal; /* Material icon uchun */
-    font-size: 1.8rem; /* Icon o'lchami */
-    cursor: pointer;
-    visibility: hidden; /* Sukut bo'yicha yashirin */
-    transition: color 0.2s ease;
-}
-.chat-input span#send-btn:hover {
-    color: #521bc9; /* Hover rangi */
-}
-
-.chat-input textarea:valid ~ span#send-btn { /* Textarea da matn bo'lsa ko'rinadi */
-    visibility: visible;
-}
-
-/* ============================================== */
-/* MEDIA QUERIES START              */
-/* ============================================== */
-
-/* Katta planshetlar va kichik desktoplar uchun (agar kerak bo'lsa) */
-@media (max-width: 1024px) {
-    .navbar {
-        padding: 20px 50px;
-    }
-    .hero {
-        padding: 50px;
-        /* min-height: auto; Agar to'liq ekran balandligi kerak bo'lmasa */
-    }
-    .hero-text h1 {
-        font-size: 36px;
-    }
-    .hero-text p {
-        font-size: 18px;
-    }
-    .hero-graphic {
-        width: 400px;
-        height: 400px;
-    }
-    .circle {
-        width: 320px;
-        height: 320px;
-    }
-    .tool {
-        width: 50px;
-        height: 50px;
-    }
-    .center-logo img {
-        width: 80px;
-    }
-    .features > div {
-        gap: 20px;
-    }
-    .features > div > div {
-        width: calc(50% - 10px); /* Ikkita ustun */
-    }
-}
-
-
-/* Kichik Ekranlar Uchun Media Query (Planshet va Mobil) - ASOSIY MOBIL BREAKPOINT */
-@media (max-width: 768px) {
-    .navbar {
-        padding: 15px 20px;
-    }
-
-    .hamburger-menu {
-        display: block; /* Gamburger menyu ko'rinadi */
-    }
-
-    .nav-links {
-        display: none; /* Sukut bo'yicha yashirin */
-        position: absolute;
-        top: 100%; /* Navbar pastidan boshlanadi */
-        left: 0;
-        width: 100%;
-        background-color: #15202B; /* Navbar foni bilan bir xil */
-        flex-direction: column;
-        align-items: center;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        z-index: 1000; /* Boshqa elementlardan ustun */
-    }
-
-    .nav-links.active { /* JavaScript orqali qo'shiladigan klass */
-        display: flex;
-    }
-
-    .nav-links a {
-        margin: 0; /* Oraliqlar olib tashlanadi */
-        padding: 15px 20px; /* Katta teginish maydoni */
-        width: 100%; /* To'liq kenglik */
-        text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Ajratuvchi chiziq */
-        font-size: 18px;
-    }
-
-    .nav-links a:last-child {
-        border-bottom: none; /* Oxirgi elementda chiziq yo'q */
-    }
-
-    .navbar .desktop-login { /* Desktop uchun login tugmasi yashiriladi */
-        display: none;
-    }
-
-    .nav-links a.login-link-mobile {
-        display: inline-block; /* Mobil menyuda ko'rinadi */
-        font-weight: bold;
-        background-color: #0099ff;
-        color: white !important; /* Muhim, chunki 'a' rangi oq edi */
-        margin: 10px 20px; /* Menyudagi boshqa linklardan ajralib turishi uchun */
-        padding: 12px 25px !important; /* Muhim, chunki 'a' paddingi bor edi */
-        border-radius: 7px;
-        width: auto !important; /* Muhim, chunki 'a' to'liq kenglikda edi */
-        border-bottom: none !important; /* Agar oxirgi bo'lmasa */
-    }
-
-    .nav-links a.login-link-mobile:hover {
-        background-color: #007acc;
-    }
-
-    .hero {
-        padding: 40px 20px; /* Padding kamaytiriladi */
-        flex-direction: column; /* Elementlar ustma-ust joylashadi */
-        text-align: center; /* Matn markazga */
-        min-height: auto; /* Balandlik avtomatik */
-    }
-
-    .hero-text {
-        max-width: 100%; /* To'liq kenglik */
-        order: 2; /* Grafikdan keyin keladi */
-        margin-top: 30px; /* Grafik bilan oraliq */
-    }
-
-    .hero-text h1 {
-        font-size: 32px; /* Shrift o'lchami kichrayadi */
-        line-height: 1.3;
-    }
-
-    .hero-text p {
-        font-size: 17px; /* Shrift o'lchami kichrayadi */
-        margin-top: 20px;
-    }
-
-    .explore-btn {
-        margin-top: 25px;
-        padding: 14px 28px;
-        font-size: 17px;
-    }
-
-    .users {
-        margin-top: 25px;
-        justify-content: center; /* Markazga */
-    }
-
-    .users span {
-        font-size: 17px;
-    }
-
-    .hero-graphic {
-        width: 100%; /* Kenglik moslashadi */
-        max-width: 380px; /* Maksimal kenglik */
-        height: auto; /* Balandlik avtomatik */
-        margin-top: 0; /* Tepadagi masofa olib tashlanadi */
-        margin-bottom: 30px; /* Pastdagi matn bilan oraliq */
-        order: 1; /* Matndan oldin keladi */
-    }
-
-    .circle {
-        width: 100%; /* Kenglik moslashadi */
-        max-width: 300px; /* Maksimal kenglik */
-        height: 300px; /* Kvadrat shaklni saqlash uchun */
-        /* border-width: 8px; Agar ko'rinadigan border bo'lsa */
-        margin: 0 auto; /* Markazga joylash */
-    }
-
-    .tool {
-        width: 50px;
-        height: 50px;
-        padding: 8px;
-    }
-    /* Tool joylashuvlari grafik kichrayganda moslashtirilishi mumkin */
-    .top { top: -25px; }
-    .top-right { top: 18%; right: -20px;}
-    .bottom-right { bottom: 18%; right: -20px;}
-    .bottom { bottom: -25px; }
-    .bottom-left { bottom: 18%; left: -20px;}
-    .top-left { top: 18%; left: -20px;}
-
-
-    .center-logo img {
-        width: 70px;
-    }
-
-    .features {
-        padding: 50px 0;
-    }
-    .features > div {
-        padding: 0 20px; /* Yon paddinglar */
-        gap: 25px;
-    }
-
-    .features > div > div {
-        width: 100%; /* Har bir feature bloki to'liq kenglikda */
-        margin-bottom: 20px; /* Bloklar orasida masofa */
-        padding: 25px 15px; /* Ichki padding */
-    }
-
-    .features > div > div:last-child {
-        margin-bottom: 0;
-    }
-
-    .numbers-100, .numbers-50, .numbers-40 {
-        font-size: 30px;
-    }
-
-    .tools {
-        font-size: 22px;
-    }
-
-    .tools-info {
-        font-size: 17px;
-        min-height: auto; /* Balandlik chegarasi olib tashlanadi */
-    }
-
-    .slider-container {
-        padding: 50px 0;
-    }
-    .slider-title {
-        font-size: 30px;
-        margin-bottom: 8px;
-    }
-
-    .slider-subtitle {
-        font-size: 17px;
-        margin-bottom: 30px;
-        padding: 0 20px; /* Yon paddinglar */
-    }
-
-    /* Slider uchun karta o'lchamlarini moslashtirish kerak bo'lishi mumkin */
-    /* Agar kerak bo'lsa, @keyframes scroll dagi qiymatlar ham o'zgaradi */
-    .popular-tool, .popular-tool1 {
-        width: 300px; /* Karta kengligi biroz kichrayadi */
-        height: auto; /* Balandlik kontentga moslashadi */
-        min-height: 430px; /* Minimal balandlik */
-        padding: 18px;
-    }
-    .slider-track {
-        /* Yangi karta kengligi va soniga moslab o'zgartiriladi */
-        width: calc( (300px + 20px) * 14 ); /* (300+20)*14 */
-    }
-    @keyframes scroll { /* Buni JavaScript bilan dinamik qilish yaxshiroq */
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc( (300px + 20px) * -7 )); }
-    }
-
-
-    .remonte1, .remonte2, .remontee1 {
-        height: 170px;
-    }
-
-    .popular-tool h1, .popular-tool1 h1 {
-        font-size: 19px;
-    }
-
-    .popular-tool p, .popular-tool1 p {
-        font-size: 15px;
-        margin-bottom: 15px;
-    }
-
-    .popular-tool button, .popular-tool1 button {
-        padding: 11px 18px;
-        font-size: 15px;
-    }
-}
-
-/* Kichikroq telefonlar uchun (masalan, 600px dan kichik) */
-@media (max-width: 600px) {
-    .hero-text h1 {
-        font-size: 28px;
-    }
-    .hero-text p {
-        font-size: 16px;
-    }
-    .explore-btn {
-        padding: 12px 25px;
-        font-size: 16px;
-    }
-    .users span {
-        font-size: 16px;
-    }
-    .hero-graphic {
-        max-width: 320px;
-    }
-    .circle {
-        max-width: 250px;
-        height: 250px;
-    }
-    .tool {
-        width: 45px;
-        height: 45px;
-        padding: 6px;
-    }
-    .center-logo img {
-        width: 60px;
-    }
-
-    /* Sliderdagi kartalar yanada kichrayishi mumkin */
-    .popular-tool, .popular-tool1 {
-        width: 280px;
-        min-height: 410px;
-    }
-    .slider-track {
-        width: calc( (280px + 20px) * 14 );
-    }
-    @keyframes scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc( (280px + 20px) * -7 )); }
-    }
-    .remonte1, .remonte2, .remontee1 {
-        height: 150px;
-    }
-}
-
-
-/* Chatbot uchun maxsus 490px media query (o'zgartirilmagan) */
-@media (max-width: 490px) {
-    .chatbot {
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 0; /* To'liq ekran */
-        z-index: 1001; /* Boshqa elementlardan ustun */
-    }
-
-    .chatbot .chatbox {
-        height: calc(100% - 120px); /* Header va input uchun joy */
-        padding-bottom: 80px; /* Input balandligiga mos */
-    }
-
-    .chatbot header span.close-chatbot-btn {
-        display: block; /* X tugmasi ko'rinadi */
-    }
-
-    .chatbot-toggler {
-        right: 20px;
-        bottom: 20px;
-        z-index: 1002; /* Chatbot dan ham ustun */
-    }
-}
-
-/* iPhone 15 va shunga o'xshash o'lchamdagi ekranlar uchun (mavjud kodingizdan) */
-/* Bu taxminan 430px va undan kichik ekranlarga ta'sir qiladi */
-@media (max-width: 430px) {
-    .navbar {
-        padding: 10px 15px;
-    }
-    .nav-links.active a { /* Faqat ochilgan menyudagi linklar uchun */
-        margin: 0;
-        font-size: 17px;
-        padding: 12px 15px;
-    }
-    .nav-links.active a.login-link-mobile {
-        padding: 10px 20px !important;
-        margin: 8px 15px;
-        font-size: 16px;
-    }
-
-    .hero {
-        padding: 30px 15px; /* Padding yanada kamaytiriladi */
-    }
-
-    .hero-text h1 {
-        font-size: 26px; /* Shrift kichrayadi */
-    }
-
-    .hero-text p {
-        font-size: 15px; /* Shrift kichrayadi */
-        margin-top: 15px;
-    }
-
-    .explore-btn {
-        margin-top: 20px;
-        padding: 10px 22px; /* Tugma kichrayadi */
-        font-size: 15px;
-    }
-
-    .users {
-        margin-top: 20px;
-    }
-
-    .users span {
-        font-size: 15px;
-    }
-
-    .hero-graphic {
-        max-width: 280px; /* Grafik yanada kichrayadi */
-        margin-bottom: 25px;
-    }
-
-    .circle {
-        max-width: 220px; /* Aylana kichrayadi */
-        height: 220px;
-        /* border-width: 6px; Agar border bo'lsa */
-    }
-
-    .tool {
-        width: 40px;
-        height: 40px;
-        padding: 5px;
-    }
-    /* Tool joylashuvlarini moslashtirish */
-    .top { top: -20px; }
-    .top-right { top: 15%; right: -15px; }
-    .bottom-right { bottom: 15%; right: -15px; }
-    .bottom { bottom: -20px; }
-    .bottom-left { bottom: 15%; left: -15px; }
-    .top-left { top: 15%; left: -15px; }
-
-    .center-logo img {
-        width: 60px; /* Markazdagi logo kichrayadi */
-    }
-
-    .features > div {
-        padding: 0 15px;
-    }
-    .features > div > div {
-        padding: 20px 10px;
-    }
-
-    .numbers-100, .numbers-50, .numbers-40 {
-        font-size: 26px;
-    }
-
-    .tools {
-        font-size: 20px;
-    }
-
-    .tools-info {
-        font-size: 15px;
-    }
-
-    .slider-title {
-        font-size: 26px;
-        margin-bottom: 5px;
-    }
-
-    .slider-subtitle {
-        font-size: 15px;
-        margin-bottom: 20px;
-        padding: 0 15px;
-    }
-
-    .popular-tool, .popular-tool1 {
-        width: 260px; /* Ekran kengligiga qarab moslashishi kerak */
-        min-height: auto; /* Minimal balandlikni kontentga moslash */
-        padding: 15px;
-    }
-    .popular-tool1 {
-        margin-left: 15px; /* Agar .slider-content da gap ishlatilmasa */
-    }
-    .slider-track {
-        width: calc( (260px + 15px) * 14 ); /* Oraliq ham kichrayishi mumkin */
-    }
-    @keyframes scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc( (260px + 15px) * -7 )); }
-    }
-
-    .remonte1, .remonte2, .remontee1 {
-        height: 140px; /* Rasmlar balandligi */
-    }
-
-    .popular-tool h1, .popular-tool1 h1 {
-        font-size: 17px;
-    }
-
-    .popular-tool p, .popular-tool1 p {
-        font-size: 14px;
-        margin-bottom: 12px;
-    }
-
-    .popular-tool button, .popular-tool1 button {
-        padding: 9px 16px;
-        font-size: 14px;
-    }
-}
-
-/* Eng kichik telefonlar uchun (mavjud kodingizdan) */
-@media (max-width: 380px) {
-    .hero-text h1 {
-        font-size: 24px;
-    }
-    .hero-text p {
-        font-size: 14px;
-    }
-    .explore-btn {
-        font-size: 14px;
-        padding: 9px 20px;
-    }
-    .users span {
-        font-size: 14px;
-    }
-    .users .container { /* Agar user iconlari ustma-ust tushib qolsa */
-        width: 70px; /* Kenglikni biroz kamaytirish */
-        /* margin-bottom: 5px; Agar ustma-ust bo'lsa */
-    }
-    .outer, .inner {
-        width: 38px;
-        height: 38px;
-    }
-    .inner {
-        left: 20px;
-    }
-
-    .hero-graphic {
-        max-width: 250px;
-    }
-    .circle {
-        max-width: 200px;
-        height: 200px;
-    }
-    .tool {
-        width: 35px;
-        height: 35px;
-    }
-    .center-logo img {
-        width: 50px;
-    }
-
-    .numbers-100, .numbers-50, .numbers-40 {
-        font-size: 24px;
-    }
-    .tools {
-        font-size: 18px;
-    }
-    .tools-info {
-        font-size: 14px;
-    }
-    .slider-title {
-        font-size: 24px;
-    }
-    .slider-subtitle {
-        font-size: 14px;
-    }
-    .popular-tool, .popular-tool1 {
-        width: 240px; /* Yana kichraytirish */
-    }
-    .slider-track {
-        width: calc( (240px + 15px) * 14 );
-    }
-    @keyframes scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc( (240px + 15px) * -7 )); }
-    }
-    .remonte1, .remonte2, .remontee1 {
-        height: 130px;
-    }
-}
-
-/* Juda kichik ekranlar uchun (masalan, 320px) */
-@media (max-width: 320px) {
-    .navbar {
-        padding: 8px 10px;
-    }
-    .nav-links.active a {
-        font-size: 15px;
-        padding: 10px 12px;
-    }
-    .nav-links.active a.login-link-mobile {
-        padding: 8px 15px !important;
-        font-size: 14px;
-    }
-    .logo { /* Agar logo matn bo'lsa */
-        font-size: 20px;
-    }
-
-    .hero-text h1 {
-        font-size: 22px;
-    }
-    .hero-text p {
-        font-size: 13px;
-    }
-    .explore-btn {
-        font-size: 13px;
-        padding: 8px 18px;
-    }
-    .hero-graphic {
-        max-width: 220px;
-    }
-    .circle {
-        max-width: 180px;
-        height: 180px;
-    }
-    .tool {
-        width: 30px;
-        height: 30px;
-        padding: 4px;
-    }
-    .top { top: -15px; }
-    .top-right { top: 12%; right: -12px; }
-    .bottom-right { bottom: 12%; right: -12px; }
-    .bottom { bottom: -15px; }
-    .bottom-left { bottom: 12%; left: -12px; }
-    .top-left { top: 12%; left: -12px; }
-    .center-logo img {
-        width: 45px;
-    }
-
-    .numbers-100, .numbers-50, .numbers-40 {
-        font-size: 22px;
-    }
-    .tools {
-        font-size: 17px;
-    }
-    .tools-info {
-        font-size: 13px;
-    }
-    .slider-title {
-        font-size: 22px;
-    }
-    .slider-subtitle {
-        font-size: 13px;
-    }
-    .popular-tool, .popular-tool1 {
-        width: 200px; /* Deyarli ekran kengligida */
-        margin-right: 10px; /* Oraliq */
-    }
-    .slider-track {
-        width: calc( (200px + 10px) * 14 );
-    }
-    @keyframes scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc( (200px + 10px) * -7 )); }
-    }
-    .remonte1, .remonte2, .remontee1 {
-        height: 110px;
-    }
-    .popular-tool h1, .popular-tool1 h1 {
-        font-size: 16px;
-    }
-    .popular-tool p, .popular-tool1 p {
-        font-size: 13px;
-    }
-    .popular-tool button, .popular-tool1 button {
-        padding: 8px 14px;
-        font-size: 13px;
-    }
-}
-
-/* ============================================== */
-/* MEDIA QUERIES END               */
-/* ============================================== */
-
-/* ============================================== */
-/* NEW SECTIONS STYLES START                   */
-/* ============================================== */
-
-/* General Styles for New Sections */
-.container-custom {
-    width: 1140px;
-    max-width: 90%; /* Consistent with .features > div */
-    margin: 0 auto;
-    padding: 0 15px; /* Basic horizontal padding */
-}
-
-.new-comer-tools-section,
-.trusted-by-brands-section,
-.testimonial-section {
-    padding: 75px 0; /* Matching .features and .slider-container */
-    text-align: center;
-}
-
-.new-comer-tools-section h2,
-.trusted-by-brands-section h2,
-.testimonial-section h2,
-.subscribe-section h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 36px; /* Matching .slider-title */
-    font-weight: 600;
-    color: #212529; /* A common dark color for headings */
-    margin-bottom: 10px;
-}
-
-.new-comer-tools-section .section-subtitle,
-.trusted-by-brands-section .section-subtitle,
-.testimonial-section .section-subtitle,
-.subscribe-section .section-subtitle {
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px; /* Matching .slider-subtitle */
-    color: #6c757d; /* A common muted color for subtitles */
-    margin-bottom: 40px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* 1. New Comer Tools Section CSS */
-.new-comer-tools-section {
-    background-color: #f8f9fa; /* Light grey background */
-}
-
-.tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px; /* Slightly reduced gap to fit 4 across comfortably in 1140px */
-    margin-bottom: 40px;
-    text-align: left;
-}
-
-.tool-card {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column;
-    min-height: 220px; /* Ensure cards have a decent minimum height */
-}
-
-.tool-card-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px; /* Reduced margin */
-}
-
-.tool-card-header img {
-    width: 36px;
-    height: 36px;
-    margin-right: 12px;
-    object-fit: contain;
-}
-
-.tool-card-header h3 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px; /* Slightly smaller to fit better */
-    font-weight: 600;
-    color: #343a40;
-    margin: 0;
-    flex-grow: 1;
-}
-
-.tool-tag {
-    font-family: 'Poppins', sans-serif;
-    font-size: 11px; /* Smaller tag text */
-    font-weight: 500;
-    padding: 3px 7px;
-    border-radius: 4px;
-    margin-left: 8px;
-    white-space: nowrap;
-    text-transform: uppercase;
-}
-
-.free-tag {
-    background-color: #e7f3ff;
-    color: #007bff;
-}
-
-.thirty-day-tag {
-    background-color: #e6fff5;
-    color: #28a745;
-}
-
-.premium-tag {
-    background-color: #fff3e0;
-    color: #ff9800;
-}
-
-.tool-description {
-    font-family: 'Poppins', sans-serif; /* Or 'Karla' if desired */
-    font-size: 14px;
-    color: #6c757d;
-    line-height: 1.5;
-    margin-bottom: 15px;
-    flex-grow: 1; /* Allows description to take available space */
-}
-
-.tool-categories {
-    display: flex;
-    flex-wrap: wrap; /* Allow tags to wrap if many */
-    gap: 8px;
-    margin-top: auto; /* Pushes categories to the bottom */
-}
-
-.category-tag {
-    font-family: 'Poppins', sans-serif;
-    font-size: 11px; /* Smaller category tags */
-    color: #495057;
-    background-color: #e9ecef;
-    padding: 4px 8px;
-    border-radius: 12px;
-}
-
-.see-all-btn {
-    background-color: #fff;
-    color: #343a40;
-    border: 1px solid #ced4da;
-    padding: 10px 25px;
-    border-radius: 7px;
-    font-weight: 500;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-block; /* To respect margins and padding correctly */
-    margin-top: 10px; /* Add some space if needed */
-}
-
-.see-all-btn:hover {
-    background-color: #e9ecef;
-    border-color: #adb5bd;
-}
-
-/* 2. Trusted by Brands Section CSS */
+/* Trusted By Brands (index.html учун - сизнинг HTML'ингизда мавжуд) */
 .trusted-by-brands-section {
-    background-color: #fff;
+  padding: 75px 0;
+  text-align: center;
+  background-color: #fff;
+} /* Умумий фон */
+.trusted-by-brands-section h2 {
+  font-size: 36px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 10px;
 }
-
+.trusted-by-brands-section .section-subtitle {
+  font-size: 18px;
+  color: #64748b;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .brands-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
-    gap: 30px;
-    align-items: start; /* Align items to the start if descriptions vary in length */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
 }
-
 .brand-card {
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    padding: 25px; /* Consistent padding */
-    text-align: center;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 30px 20px;
+  text-align: center;
 }
-
 .brand-card img {
-    /* height: auto; width: auto; max-height: 40px; handled by inline style for specific logos */
-    max-width: 150px; /* Prevent logos from becoming too wide */
-    margin-bottom: 15px;
-    object-fit: contain;
+  max-height: 50px;
+  margin-bottom: 20px;
+  object-fit: contain;
 }
-
 .brand-card p {
-    font-family: 'Poppins', sans-serif; /* Or 'Karla' */
-    font-size: 14px;
-    color: #6c757d;
-    line-height: 1.6;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.7;
 }
 
-/* 3. Testimonial Section CSS */
+/* Testimonials (index.html учун - сизнинг HTML'ингизда мавжуд) */
 .testimonial-section {
-    background-color: #f8f9fa;
+  padding: 75px 0;
+  text-align: center;
+  background-color: #f8f9fa;
 }
-
+.testimonial-section h2 {
+  font-size: 36px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+.testimonial-section .section-subtitle {
+  font-size: 18px;
+  color: #64748b;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    text-align: left;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  text-align: left;
 }
-
 .testimonial-card {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column;
-    min-height: 280px; /* Ensure a good minimum height */
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
 }
-
 .testimonial-rating {
-    margin-bottom: 15px;
-    color: #FFC107; /* Gold for stars */
+  margin-bottom: 15px;
+  color: #facc15; /* Сариқ юлдузлар */
 }
-
 .testimonial-rating .material-symbols-outlined {
-    font-size: 20px; /* Adjust star size */
-    /* Ensure icons are filled if that's the style: font-variation-settings: 'FILL' 1; */
+  font-size: 20px;
+  font-variation-settings: "FILL" 1;
 }
-
 .testimonial-text {
-    font-family: 'Karla', sans-serif; /* Using Karla for quote text as it's available */
-    font-size: 16px;
-    color: #495057;
-    line-height: 1.7;
-    margin-bottom: 20px;
-    font-style: normal; /* Can be italic if preferred */
-    flex-grow: 1;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  color: #334155;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  font-style: italic;
+  flex-grow: 1;
 }
-/* Add quotation marks visually if needed */
 .testimonial-text::before {
-    content: "“";
-    font-size: 1.5em; /* Larger quote mark */
-    margin-right: 0.1em;
-    color: #adb5bd;
+  content: open-quote;
+  font-size: 1.5em;
+  margin-right: 0.1em;
+  color: #94a3b8;
 }
 .testimonial-text::after {
-    content: "”";
-    font-size: 1.5em;
-    margin-left: 0.1em;
-    color: #adb5bd;
+  content: close-quote;
+  font-size: 1.5em;
+  margin-left: 0.1em;
+  color: #94a3b8;
 }
-
-
 .testimonial-author {
-    display: flex;
-    align-items: center;
-    margin-top: auto; /* Pushes author to the bottom */
+  display: flex;
+  align-items: center;
+  margin-top: auto;
 }
-
 .testimonial-author img {
-    width: 45px; /* Slightly smaller avatar */
-    height: 45px;
-    border-radius: 50%;
-    margin-right: 12px;
-    object-fit: cover;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
 }
-
 .author-info h4 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px; /* Slightly smaller name */
-    font-weight: 600;
-    color: #343a40;
-    margin: 0 0 2px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 2px 0;
 }
-
 .author-info p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 13px; /* Smaller role text */
-    color: #6c757d;
-    margin: 0;
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
 }
 
-/* 4. Subscribe Section CSS */
+/* Subscribe Section (Умумий, image_190e73.png дизайнига мос) */
 .subscribe-section {
-    background-color: #1D2939; /* Dark background from image */
-    color: #fff;
-    padding: 60px 0; /* Standard padding */
-    text-align: center;
+  background-color: #1e293b;
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
 }
-
 .subscribe-section h2 {
-    color: #fff;
-    font-size: 32px; /* Adjusted size */
+  font-size: 28px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
 }
-
 .subscribe-section .section-subtitle {
-    color: #dee2e6; /* Lighter subtitle for dark bg */
-    font-size: 17px;
-    margin-bottom: 35px;
+  font-size: 15px;
+  color: #94a3b8;
+  margin-bottom: 30px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 .subscribe-form {
-    display: flex;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    max-width: 580px; /* Max width for the form */
-    margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  max-width: 480px;
+  margin: 0 auto;
 }
-
 .subscribe-form input[type="email"] {
-    flex-grow: 1;
-    padding: 14px 18px; /* Adjusted padding */
-    border-radius: 6px; /* Slightly less rounded */
-    border: 1px solid #495057;
-    background-color: #2c3e50; /* Darker input background */
-    color: #fff;
-    font-size: 16px;
-    outline: none;
-    min-width: 250px; /* Ensure input has a good minimum width */
+  flex-grow: 1;
+  padding: 11px 16px;
+  border-radius: 6px;
+  border: 1px solid #475569;
+  background-color: #334155;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  min-width: 200px;
 }
-
 .subscribe-form input[type="email"]::placeholder {
-    color: #adb5bd;
+  color: #94a3b8;
 }
-
+.subscribe-btn-form {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 11px 22px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.subscribe-btn-form:hover {
+  background-color: #1d4ed8;
+}
+/* Эски .subscribe-btn учун ҳам стил агар ишлатилса */
 .subscribe-btn {
-    background-color: #0099ff; /* Existing button blue */
-    color: white;
-    border: none;
-    padding: 14px 28px; /* Matched input padding */
-    border-radius: 6px;
-    font-weight: bold; /* Keep bold */
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    white-space: nowrap; /* Prevent button text from wrapping */
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 11px 22px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-
 .subscribe-btn:hover {
-    background-color: #007acc;
+  background-color: #1d4ed8;
 }
 
-/* 5. Footer CSS */
+/* Footer (Умумий, image_190e73.png дизайнига мос) */
 .main-footer {
-    background-color: #15202B; /* Matching navbar */
-    color: #ced4da; /* Light text color */
-    padding-top: 50px; /* Reduced top padding */
+  background-color: #0f172a;
+  color: #94a3b8;
+  padding-top: 50px;
 }
-
-/* .footer-content.container-custom ensures width consistency */
 .footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
-    padding-bottom: 40px; /* Space before footer-bottom */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  padding-bottom: 30px;
 }
-
 .footer-logo-social {
-    flex: 1 1 250px; /* Flex properties for responsiveness */
-    margin-bottom: 20px; /* Space when items wrap */
+  flex: 1 1 250px;
+  margin-bottom: 25px;
 }
-
-.footer-gear-logo {
-    width: 90px; /* Adjusted logo size */
-    margin-bottom: 15px;
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 15px;
 }
-
+.footer-logo .site-logo-newcomer {
+  height: 30px;
+  width: auto;
+  max-height: 30px;
+  border-radius: 4px;
+} /* Футердаги логотип учун */
+.footer-logo .logo-dot-newcomer {
+  width: 6px;
+  height: 6px;
+  margin-left: 6px;
+}
 .social-icons a {
-    margin-right: 12px;
-    display: inline-block;
+  margin-right: 12px;
+  display: inline-block;
 }
 .social-icons a:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 .social-icons img {
-    width: 22px; /* Adjusted icon size */
-    height: 22px;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
+  width: 20px;
+  height: 20px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
 }
 .social-icons img:hover {
-    opacity: 1;
+  opacity: 1;
 }
-
 .footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px; /* Gap between columns */
-    flex: 2 1 500px; /* Allow links section to take more space */
-    justify-content: space-around; /* Distribute columns if space allows */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  flex: 2 1 500px;
+  justify-content: space-between;
 }
-
 .footer-column {
-    flex: 1 1 160px; /* Allow columns to grow and shrink */
-    min-width: 150px; /* Minimum width for a column */
+  flex: 1 1 150px;
+  min-width: 140px;
 }
-
 .footer-column h4 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 17px; /* Adjusted heading size */
-    font-weight: 500; /* Slightly less bold */
-    color: #fff;
-    margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #e2e8f0;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
-
 .footer-column a,
 .footer-column p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    color: #adb5bd; /* Lighter than default #ced4da for links */
-    text-decoration: none;
-    display: block;
-    margin-bottom: 8px;
-    line-height: 1.5;
+  font-size: 13px;
+  color: #94a3b8;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+  line-height: 1.5;
 }
 .footer-column p {
-    color: #ced4da; /* Paragraphs slightly more prominent */
+  color: #cbd5e1;
 }
-
 .footer-column a:hover {
-    color: #fff;
-    text-decoration: underline;
+  color: #fff;
 }
-
 .footer-bottom {
-    background-color: #101720; /* Slightly darker for contrast */
-    text-align: center;
-    padding: 18px 15px; /* Adjusted padding */
-    font-size: 13px; /* Smaller text */
-    color: #86909a; /* Muted color */
-    border-top: 1px solid #273442; /* Subtler border */
+  background-color: #0b101b;
+  text-align: center;
+  padding: 16px 15px;
+  font-size: 12px;
+  color: #64748b;
+  border-top: 1px solid #1e293b;
 }
-
 .footer-bottom p {
+  margin: 0;
+}
+
+/* Chatbot (Умумий, image_190e73.png дизайнига мос) */
+body.show-chatbot {
+  /* overflow: hidden; */
+}
+.chatbot-toggler {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  height: 50px;
+  width: 50px;
+  background: #00a8ff;
+  color: #fff;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.chatbot-toggler:hover {
+  background: #008bcc;
+}
+.chatbot-toggler span {
+  position: absolute;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  font-size: 26px;
+}
+.chatbot-toggler span:first-child {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+.chatbot-toggler span:last-child {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+body.show-chatbot .chatbot-toggler span:first-child {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+body.show-chatbot .chatbot-toggler span:last-child {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+.chatbot {
+  width: 370px;
+  position: fixed;
+  right: 30px;
+  bottom: 90px;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  transform: scale(0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  border: 1px solid #e2e8f0;
+}
+body.show-chatbot .chatbot {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+.chatbot header {
+  background: #121a2b;
+  padding: 12px 0;
+  text-align: center;
+  position: relative;
+}
+.chatbot header h2 {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.chatbot header span.close-chatbot-btn {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #abb2bf;
+  cursor: pointer;
+  font-size: 1.6rem;
+  display: none;
+  transition: color 0.2s ease;
+}
+.chatbot header span.close-chatbot-btn:hover {
+  color: #fff;
+}
+.chatbot .chatbox {
+  height: 400px;
+  overflow-y: auto;
+  padding: 15px 15px 70px;
+}
+.chatbox .chat {
+  display: flex;
+  list-style: none;
+  margin-bottom: 12px;
+}
+.chatbox .chat p {
+  padding: 9px 13px;
+  border-radius: 15px;
+  font-size: 0.875rem;
+  max-width: 75%;
+  word-wrap: break-word;
+  line-height: 1.45;
+}
+.chatbox .incoming {
+  margin: 12px 0;
+  justify-content: flex-start;
+}
+.chatbox .incoming span {
+  height: 28px;
+  width: 28px;
+  background: #00a8ff;
+  color: #fff;
+  text-align: center;
+  line-height: 28px;
+  border-radius: 50%;
+  margin-right: 8px;
+  font-size: 16px;
+  align-self: flex-end;
+}
+.chatbox .incoming p {
+  background: #f1f5f9;
+  color: #1e293b;
+  border-radius: 15px 15px 15px 3px;
+}
+.chatbox .outgoing {
+  justify-content: flex-end;
+  margin: 12px 0;
+}
+.chatbox .outgoing p {
+  background: #00a8ff;
+  color: #fff;
+  border-radius: 15px 15px 3px 15px;
+}
+.chatbot .chat-input {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  padding: 5px 15px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  min-height: 55px;
+}
+.chat-input textarea {
+  flex-grow: 1;
+  height: auto;
+  min-height: 20px;
+  max-height: 90px;
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+  resize: none;
+  padding: 7px 0;
+  background-color: transparent;
+  overflow-y: auto;
+  line-height: 1.5;
+}
+.chat-input span#send-btn {
+  color: #00a8ff;
+  align-self: center;
+  font-size: 1.6rem;
+  cursor: pointer;
+  visibility: hidden;
+  transition: color 0.2s ease;
+  padding: 4px;
+}
+.chat-input span#send-btn:hover {
+  color: #008bcc;
+}
+.chat-input textarea:valid ~ span#send-btn {
+  visibility: visible;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1199px) {
+  .nav-container,
+  .container-custom {
+    width: 960px;
+  }
+}
+@media (max-width: 991px) {
+  .nav-container,
+  .container-custom {
+    width: 720px;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #121a2b;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+  .nav-links.active {
+    max-height: 350px;
+    display: flex;
+  }
+  .nav-links a {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    padding: 12px 20px;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+  .login-btn.desktop-login,
+  .login-btn-nav {
+    display: none;
+  }
+  .hamburger-menu {
+    display: block;
+  }
+  .hero-text h1 {
+    font-size: 36px;
+  }
+  .hero-graphic {
+    width: 400px;
+    height: 400px;
+  }
+  .hero-graphic .circle {
+    width: 320px;
+    height: 320px;
+  }
+  .features > div > div {
+    width: calc(50% - 15px);
+  }
+  .newcomer-banner h1 {
+    font-size: 28px;
+  }
+  .newcomer-banner .banner-content-newcomer {
+    padding: 25px 30px;
+  }
+  .graph-element {
+    display: none;
+  }
+  .tools-showcase-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
 }
-
-
-/* Responsive adjustments for new sections */
-@media (max-width: 992px) { /* For tablets and larger phones */
-    .tools-grid, .brands-grid, .testimonials-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-    }
-    .footer-links {
-        justify-content: flex-start; /* Align columns to start */
-    }
+@media (max-width: 767px) {
+  .nav-container,
+  .container-custom {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .navbar {
+    padding: 0;
+  }
+  .nav-container {
+    height: 60px;
+  }
+  .nav-links {
+    top: 60px;
+  }
+  .hero {
+    padding: 40px 15px;
+    flex-direction: column;
+    text-align: center;
+    min-height: auto;
+  }
+  .hero-text {
+    max-width: 100%;
+    order: 2;
+    margin-top: 30px;
+  }
+  .hero-text h1 {
+    font-size: 32px;
+  }
+  .hero-graphic {
+    width: 100%;
+    max-width: 380px;
+    order: 1;
+    margin-bottom: 30px;
+  }
+  .hero-graphic .circle {
+    max-width: 300px;
+    height: 300px;
+  }
+  .features {
+    padding: 50px 0;
+  }
+  .features > div {
+    padding: 0 15px;
+  }
+  .features > div > div {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .slider-title,
+  .newcomer-banner h1,
+  .trusted-by-brands-section h2,
+  .testimonial-section h2,
+  .subscribe-section h2 {
+    font-size: 30px !important;
+  }
+  .slider-subtitle,
+  .newcomer-banner p,
+  .trusted-by-brands-section .section-subtitle,
+  .testimonial-section .section-subtitle,
+  .subscribe-section .section-subtitle {
+    font-size: 17px !important;
+    padding: 0 10px;
+  }
+  .popular-tool {
+    width: 100%;
+  }
+  .showcase-tool-card {
+    width: 100%;
+  }
+  .tools-showcase-grid,
+  .brands-grid,
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+  .showcase-tool-tag {
+    float: none;
+    display: inline-block;
+    margin-top: 4px;
+    margin-left: 0;
+  }
+  .showcase-tool-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .subscribe-form {
+    flex-direction: column;
+  }
+  .subscribe-form input[type="email"],
+  .subscribe-btn-form,
+  .subscribe-btn {
+    width: 100%;
+  }
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-logo-social,
+  .footer-links {
+    flex-basis: auto;
+    width: 100%;
+    text-align: center;
+  }
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .footer-column {
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 260px;
+  }
+  .chatbot {
+    width: calc(100% - 30px);
+    right: 15px;
+    bottom: 75px;
+  }
+  .chatbot-toggler {
+    right: 15px;
+    bottom: 15px;
+  }
 }
-
-
-@media (max-width: 768px) {
-    .new-comer-tools-section h2,
-    .trusted-by-brands-section h2,
-    .testimonial-section h2,
-    .subscribe-section h2 {
-        font-size: 30px;
-    }
-    .new-comer-tools-section .section-subtitle,
-    .trusted-by-brands-section .section-subtitle,
-    .testimonial-section .section-subtitle,
-    .subscribe-section .section-subtitle {
-        font-size: 17px;
-        padding: 0 10px; /* Add horizontal padding to subtitles on smaller screens */
-    }
-
-    .tools-grid, .brands-grid, .testimonials-grid {
-        grid-template-columns: 1fr; /* Single column for smaller devices */
-        gap: 20px;
-    }
-    .tool-card, .brand-card, .testimonial-card {
-        min-height: auto; /* Reset min-height for single column */
-    }
-
-    .subscribe-form {
-        flex-direction: column; /* Stack input and button */
-        gap: 15px;
-        padding: 0 15px; /* Add padding to form container */
-    }
-    .subscribe-form input[type="email"],
-    .subscribe-form button.subscribe-btn {
-        width: 100%; /* Full width for stacked items */
-    }
-
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .footer-logo-social {
-        margin-bottom: 30px;
-        flex-basis: auto;
-    }
-    .footer-links {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        gap: 20px;
-        flex-basis: auto;
-    }
-    .footer-column {
-        margin-bottom: 15px;
-        flex-basis: auto;
-        width: 100%;
-        max-width: 280px; /* Limit width for readability */
-    }
-}
-
 @media (max-width: 480px) {
-    .new-comer-tools-section h2,
-    .trusted-by-brands-section h2,
-    .testimonial-section h2,
-    .subscribe-section h2 {
-        font-size: 26px;
-    }
-    .new-comer-tools-section .section-subtitle,
-    .trusted-by-brands-section .section-subtitle,
-    .testimonial-section .section-subtitle,
-    .subscribe-section .section-subtitle {
-        font-size: 16px;
-    }
-    .tool-card-header h3 {
-        font-size: 17px;
-    }
-    .tool-description, .brand-card p, .testimonial-text {
-        font-size: 13px;
-    }
-    .author-info h4 { font-size: 14px;}
-    .author-info p { font-size: 12px;}
-    .subscribe-form input[type="email"],
-    .subscribe-form button.subscribe-btn {
-        font-size: 15px;
-        padding: 12px 15px;
-    }
-    .footer-column h4 { font-size: 16px; }
-    .footer-column a, .footer-column p { font-size: 13px; }
-    .footer-bottom { font-size: 12px; }
+  .hero-text h1,
+  .newcomer-banner h1 {
+    font-size: 24px !important;
+  }
+  .hero-text p,
+  .newcomer-banner p {
+    font-size: 14px !important;
+  }
+  .explore-btn,
+  .explore-now-banner-btn {
+    font-size: 14px;
+    padding: 10px 25px;
+  }
+  .newcomer-banner .banner-content-newcomer {
+    padding: 15px 20px;
+  }
+  .slider-title,
+  .trusted-by-brands-section h2,
+  .testimonial-section h2,
+  .subscribe-section h2 {
+    font-size: 26px !important;
+  }
+  .slider-subtitle,
+  .trusted-by-brands-section .section-subtitle,
+  .testimonial-section .section-subtitle,
+  .subscribe-section .section-subtitle {
+    font-size: 15px !important;
+  }
+  .showcase-tool-card {
+    padding: 15px;
+  }
+  .showcase-tool-header h3 {
+    font-size: 15px;
+  }
+  .showcase-tool-description {
+    font-size: 12px;
+  }
+  .showcase-category {
+    font-size: 10px;
+  }
+  .pagination-nav {
+    margin-top: 25px;
+  }
+  .page-item .page-link {
+    padding: 5px 9px;
+    font-size: 12px;
+    min-width: 28px;
+    height: 28px;
+  }
+  .chatbot header h2 {
+    font-size: 1rem;
+  }
+  .chatbox .chat p {
+    font-size: 0.8rem;
+  }
+  .chatbot .chatbox {
+    height: calc(100vh - 180px);
+  }
 }
-
-/* ============================================== */
-/* NEW SECTIONS STYLES END                     */
-/* ============================================== */

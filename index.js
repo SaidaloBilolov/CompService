@@ -1,199 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("DOM to'liq yuklandi va tahlil qilindi.");
+    console.log("DOM fully loaded and parsed.");
 
-    // ----- CHATBOT UCHUN ELEMENTLAR -----
-    const chatbotToggler = document.querySelector(".chatbot-toggler");
-    const chatbotWindow = document.querySelector(".chatbot");
-    const closeChatbotBtn = document.querySelector(".chatbot header span.close-chatbot-btn");
-    const chatInput = document.querySelector(".chat-input textarea");
-    const sendChatBtn = document.querySelector(".chat-input span#send-btn");
-    const chatbox = document.querySelector(".chatbox");
-
-    console.log("Chatbot Toggler Element:", chatbotToggler);
-    console.log("Chatbot Element:", chatbotWindow);
-
-    // ----- CHATBOT UCHUN HODISALAR -----
-    if (chatbotToggler) {
-        chatbotToggler.addEventListener("click", () => {
-            console.log("Chatbot toggler bosildi!");
-            document.body.classList.toggle("show-chatbot");
-            console.log("body klasslari:", document.body.className);
-        });
-    } else {
-        console.error("Xatolik: Chatbot ochish/yopish tugmasi (.chatbot-toggler) topilmadi!");
-    }
-
-    if (closeChatbotBtn) {
-        closeChatbotBtn.addEventListener("click", () => {
-            console.log("Chatbot yopish tugmasi (headerdagi) bosildi!");
-            document.body.classList.remove("show-chatbot");
-            console.log("body klasslari (yopishdan keyin):", document.body.className);
-        });
-    } else {
-        console.warn("Ogohlantirish: Chatbot headeridagi yopish tugmasi topilmadi.");
-    }
-
-    // ----- CHATBOT UCHUN FUNKSIYALAR -----
-    const createChatLi = (message, className) => {
-        const chatLi = document.createElement("li");
-        chatLi.classList.add("chat", className);
-        let chatContent = "";
-        if (className === "outgoing") {
-            chatContent = `<p>${message}</p>`;
-        } else {
-            chatContent = `<span class="material-symbols-outlined">smart_toy</span><p>${message}</p>`;
-        }
-        chatLi.innerHTML = chatContent;
-        return chatLi;
-    };
-
-    // ----- KENGAYTIRILGAN JAVOBLAR BILAN getSimpleBotResponse FUNKSIYASI -----
-    const getSimpleBotResponse = (userMessage) => {
-        const message = userMessage.toLowerCase().trim();
-
-        if (message.includes("salom") || message.includes("assalomu alaykum") || message.includes("privet")) {
-            return "Salom! Kompyuter xizmatlari bo'yicha sizga qanday yordam bera olaman?";
-        } else if (message.includes("xayr") || message.includes("ko'rishguncha") || message.includes("poka")) {
-            return "Xayr! Yaxshi qoling. Muammo bo'lsa, yana murojaat qiling!";
-        } else if (message.includes("qanday ishlar") || message.includes("nima gap") || message.includes("ahvollar qanday")) {
-            return "Hammasi joyida, rahmat! Sizning kompyuteringizda muammolar yo'qligiga umid qilaman. Agar bo'lsa, yordamga tayyorman!";
-        } else if (message.includes("yordam") || message.includes("savol")) {
-            return "Albatta, savolingizni yoki muammoingizni ayting. Qo'limdan kelgancha yordam beraman.";
-        } else if (message.includes("rahmat") || message.includes("tashakkur") || message.includes("spasibo")) {
-            return "Arzimaydi! Yana yordamim kerak bo'lsa, tortinmang.";
-        } else if (message.includes("isming nima") || message.includes("sen kimsan")) {
-            return "Men sizning virtual yordamchingizman, kompyuter xizmatlari bo'yicha savollaringizga javob berish uchun yaratilganman.";
-        }
-
-        // Xizmatlar haqida umumiy savol
-        else if (message.includes("xizmatlar") || message.includes("servislar") || message.includes("nima ish qilasizlar")) {
-            return "Biz quyidagi xizmatlarni taklif etamiz: <br>1. Kompyuter va noutbuklarni ta'mirlash <br>2. Dasturiy ta'minot o'rnatish va sozlash (Windows, Antivirus va hk.) <br>3. Viruslardan tozalash <br>4. Ma'lumotlarni tiklash <br>5. Kompyuter qismlarini almashtirish va modernizatsiya qilish <br>6. Internet va tarmoq sozlamalari. <br>Qaysi biri haqida batafsil ma'lumot kerak?";
-        }
-
-        // Muayyan xizmatlar haqida
-        else if (message.includes("kompyuter tuzatish") || message.includes("remont") || message.includes("kompyuterim buzildi")) {
-            return "Kompyuteringizda qanday muammo yuzaga keldi? Masalan, yonmayaptimi, qotib qolyaptimi, g'alati ovoz chiqaryaptimi yoki boshqa biror narsami? Muammoni batafsilroq aytsangiz, aniqroq yordam bera olaman.";
-        } else if (message.includes("noutbuk tuzatish") || message.includes("noutbuk remont")) {
-            return "Noutbukingiz bilan bog'liq muammo nimada? Ekran, klaviatura, batareya yoki boshqa biror qismidami? Iltimos, batafsilroq ma'lumot bering.";
-        } else if (message.includes("dastur o'rnatish") || message.includes("programma o'rnatish") || message.includes("windows o'rnatish") || message.includes("antivirus o'rnatish")) {
-            if (message.includes("windows")) {
-                return "Windows operatsion tizimini o'rnatish yoki qayta o'rnatish xizmatimiz mavjud. Litsenziyalangan dasturlardan foydalanishni tavsiya etamiz. Qaysi versiyasini o'rnatmoqchisiz?";
-            } else if (message.includes("antivirus")) {
-                return "Kompyuteringizni viruslardan himoya qilish uchun antivirus dasturini o'rnatib beramiz. Sizda biror bir tanlagan antivirus bormi yoki tavsiyamiz kerakmi?";
-            }
-            return "Qanday dasturiy ta'minot o'rnatmoqchisiz? Biz ofis dasturlari, dizayn dasturlari, antiviruslar va boshqa ko'plab dasturlarni o'rnatishda yordam bera olamiz.";
-        } else if (message.includes("virus") || message.includes("virus tozalash")) {
-            return "Kompyuteringizga virus tushganidan shubhalanayapsizmi yoki sekin ishlayaptimi? Biz kompyuteringizni viruslardan tozalash va himoya choralarini ko'rishga yordam beramiz.";
-        } else if (message.includes("ma'lumotlarni tiklash") || message.includes("fayllarim o'chib ketdi") || message.includes("fleshka ochilmayapti")) {
-            return "Ma'lumotlaringiz o'chib ketdimi yoki qurilmangiz (fleshka, qattiq disk) ochilmayaptimi? Ma'lumotlarni tiklash imkoniyati bor, lekin bu holatga bog'liq. Qurilmangizni bizga olib kelishingiz kerak bo'ladi.";
-        } else if (message.includes("kompyuter qotib qolyapti") || message.includes("komp sekin ishlayapti")) {
-            return "Kompyuterning qotib qolishi yoki sekin ishlashiga bir nechta sabablar bo'lishi mumkin: viruslar, keraksiz fayllar, operativ xotira yetishmasligi yoki qattiq diskdagi muammolar. Diagnostika qilish uchun bizga murojaat qilishingiz mumkin.";
-        } else if (message.includes("internet ishlamayapti") || message.includes("internetga ulanolmayapman")) {
-            return "Internet ishlamayotgan bo'lsa, avvalo modem/router qurilmangizni qayta yoqib ko'ring. Agar bu yordam bermasa, bizga murojaat qiling, sozlamalarni tekshirib beramiz yoki provayderingiz bilan bog'lanishda yordam beramiz.";
-        }
-
-        // Narxlar haqida
-        else if (message.includes("narx") || message.includes("qancha turadi") || message.includes("stoimost") || message.includes("narxi qancha")) {
-            if (message.includes("diagnostika") || message.includes("tekshirish")) {
-                return "Kompyuterni dastlabki diagnostika qilish (muammoni aniqlash) bizda odatda [Diagnostika Narxini Shu Yerga Yozing, masalan: BEPUL yoki 50,000 so'm]. Keyingi ta'mirlash ishlari narxi muammoga qarab belgilanadi.";
-            }
-            return "Xizmatlar narxi muammoning murakkabligiga va kerak bo'ladigan ehtiyot qismlarga qarab o'zgaradi. Aniq narxni bilish uchun, iltimos, muammoingizni batafsilroq tushuntiring yoki kompyuteringizni diagnostikaga olib keling. Biz bilan bog'laning: [Telefon Raqamingizni Shu Yerga Yozing].";
-        }
-
-        // Manzil va ish vaqti
-        else if (message.includes("manzil") || message.includes("adres") || message.includes("qayerda joylashgansizlar")) {
-            return "Bizning manzilimiz: [Sizning To'liq Manzilingizni Shu Yerga Yozing]. Google Xaritalarda bizni [Kompaniyangiz Nomini Shu Yerga Yozing] deb qidirsangiz topasiz.";
-        } else if (message.includes("ish vaqti") || message.includes("qachon ishlaysizlar") || message.includes("ish tartibi")) {
-            return "Bizning ish vaqtimiz: Dushanbadan Shanbagacha, soat [Boshlanish Vaqtini Shu Yerga Yozing] dan [Tugash Vaqtini Shu Yerga Yozing] gacha. Yakshanba - dam olish kuni. Telefon orqali maslahat olish uchun: [Telefon Raqamingizni Shu Yerga Yozing].";
-        } else if (message.includes("telefon raqam") || message.includes("aloqa") || message.includes("bog'lanish")) {
-            return "Biz bilan bog'lanish uchun telefon raqamimiz: [Telefon Raqamingizni Shu Yerga Yozing]. Telegram orqali yozishingiz ham mumkin: [Telegram Manzilingiz yoki Telefon Raqamingizni Shu Yerga Yozing].";
-        }
-
-        // Kichik maslahatlar (ehtiyotkorlik bilan)
-        else if (message.includes("kompyuter qizib ketyapti") || message.includes("noutbuk qiziyapti")) {
-            return "Kompyuterning qizib ketishi chang to'planishi yoki sovutish tizimidagi nosozlikdan bo'lishi mumkin. Vaqti-vaqti bilan tozalab turish kerak. Agar o'zingiz tozalay olmasangiz, biz yordam beramiz.";
-        } else if (message.includes("ekran ko'rsatmayapti") || message.includes("monitor ishlamayapti")) {
-            return "Ekran ko'rsatmayotgan bo'lsa, avvalo kabel ulanishlarini tekshiring. Agar stol kompyuteri bo'lsa, monitorning o'zi yoqilganligiga va kompyuterga to'g'ri ulanganligiga ishonch hosil qiling. Muammo davom etsa, bizga olib keling.";
-        }
-
-        // Hazil yoki boshqa narsalar
-        else if (message.includes("hazil ayt") || message.includes("latifa")) {
-            const jokes = [
-                "Bir programmistdan so'rashibdi: Sizga qancha programmist kerak bitta lampochkani almashtirish uchun? Javob: Hech qancha, bu apparat ta'minoti muammosi!",
-                "Nega kompyuter sovuq qotdi? Chunki u Windows (derazalar) ni ochiq qoldirgandi!",
-                "Ikki bit suhbatlashyapti. Bittasi ikkinchisiga: 'Menda sal bit bor edi, shuni almashtirib berolmaysanmi?'"
-            ];
-            return jokes[Math.floor(Math.random() * jokes.length)];
-        }
-
-        // Agar hech qanday shartga mos kelmasa
-        else {
-            return "Kechirasiz, bu savolingizga hozircha javob bera olmayman. Iltimos, savolingizni boshqacha tarzda bering yoki to'g'ridan-to'g'ri biz bilan bog'laning: [Telefon Raqamingizni Shu Yerga Yozing].";
-        }
-    };
-    // ----- getSimpleBotResponse FUNKSIYASI TUGADI -----
-
-
-    const handleChat = () => {
-        if (!chatInput || !chatbox) {
-            console.error("Chat input yoki chatbox topilmadi!");
-            return;
-        }
-        const userMessageText = chatInput.value.trim();
-        if (!userMessageText) return;
-
-        const outgoingChatLi = createChatLi(userMessageText, "outgoing");
-        chatbox.appendChild(outgoingChatLi);
-        chatbox.scrollTop = chatbox.scrollHeight;
-
-        chatInput.value = "";
-        chatInput.style.height = "auto"; // Reset height
-
-        setTimeout(() => {
-            const botMessageText = getSimpleBotResponse(userMessageText);
-            const incomingChatLi = createChatLi(botMessageText, "incoming");
-            chatbox.appendChild(incomingChatLi);
-            chatbox.scrollTop = chatbox.scrollHeight;
-        }, 600);
-    };
-
-    if (sendChatBtn) {
-        sendChatBtn.addEventListener("click", handleChat);
-    } else {
-        console.warn("Ogohlantirish: Xabar yuborish tugmasi (span#send-btn) topilmadi.");
-    }
-
-    if (chatInput) {
-        chatInput.addEventListener("keydown", (e) => {
-            if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                handleChat();
-            }
-        });
-        chatInput.addEventListener("input", () => {
-            chatInput.style.height = "auto";
-            chatInput.style.height = `${chatInput.scrollHeight}px`;
-            if (sendChatBtn) {
-                if (chatInput.value.trim() !== "") {
-                    sendChatBtn.style.visibility = "visible";
-                } else {
-                    sendChatBtn.style.visibility = "hidden";
-                }
-            }
-        });
-        // Sahifa yuklanganda yuborish tugmasining ko'rinishini o'rnating
-        if (sendChatBtn) { // Bu yerda ham tekshiruv
-            if (chatInput.value.trim() === "") {
-                sendChatBtn.style.visibility = "hidden";
-            } else {
-                sendChatBtn.style.visibility = "visible";
-            }
-        }
-    } else {
-        console.error("Xatolik: Xabar kiritish maydoni (textarea) topilmadi!");
-    }
-
-    // ----- GAMBURGER MENYU UCHUN YANGI KOD -----
+    // ----- HAMBURGER MENU -----
     const hamburgerBtn = document.querySelector(".hamburger-menu");
     const navLinks = document.querySelector(".nav-links");
     const hamburgerIcon = hamburgerBtn ? hamburgerBtn.querySelector(".hamburger-icon") : null;
@@ -202,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (hamburgerBtn && navLinks) {
         hamburgerBtn.addEventListener("click", () => {
             const isActive = navLinks.classList.toggle("active");
-            hamburgerBtn.setAttribute('aria-expanded', isActive);
+            hamburgerBtn.setAttribute('aria-expanded', isActive.toString());
 
             if (isActive) {
                 if (hamburgerIcon) hamburgerIcon.style.display = "none";
@@ -214,12 +22,17 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    hamburgerBtn.setAttribute('aria-expanded', 'false');
-                    if (hamburgerIcon) hamburgerIcon.style.display = "block";
-                    if (closeMenuIcon) closeMenuIcon.style.display = "none";
+            link.addEventListener('click', (e) => { // Added event 'e'
+                // Close menu if it's a same-page anchor link or for mobile navigation
+                if (link.getAttribute('href').startsWith('#') || navLinks.classList.contains('active')) {
+                    // For actual page navigation, the menu will disappear with page load.
+                    // This primarily helps for SPAs or same-page anchors.
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburgerBtn.setAttribute('aria-expanded', 'false');
+                        if (hamburgerIcon) hamburgerIcon.style.display = "block";
+                        if (closeMenuIcon) closeMenuIcon.style.display = "none";
+                    }
                 }
             });
         });
@@ -235,10 +48,132 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (closeMenuIcon) closeMenuIcon.style.display = "none";
             }
         });
-
     } else {
-        if (!hamburgerBtn) console.warn("Gamburger tugmasi (.hamburger-menu) topilmadi.");
-        if (!navLinks) console.warn("Navigatsiya havolalari konteyneri (.nav-links) topilmadi.");
+        if (!hamburgerBtn) console.warn("Warning: Hamburger button (.hamburger-menu) not found.");
+        if (!navLinks) console.warn("Warning: Navigation links container (.nav-links) not found.");
     }
-    // ----- GAMBURGER MENYU UCHUN KOD TUGADI -----
+
+    // ----- CHATBOT -----
+    const chatbotToggler = document.querySelector(".chatbot-toggler");
+    const chatbotWindow = document.querySelector(".chatbot");
+    const closeChatbotBtn = chatbotWindow ? chatbotWindow.querySelector(".chatbot header .close-chatbot-btn") : null;
+    const chatInput = chatbotWindow ? chatbotWindow.querySelector(".chat-input textarea") : null;
+    const sendChatBtn = chatbotWindow ? chatbotWindow.querySelector(".chat-input span#send-btn") : null;
+    const chatbox = chatbotWindow ? chatbotWindow.querySelector(".chatbox") : null;
+
+    if (chatbotToggler) {
+        chatbotToggler.addEventListener("click", () => {
+            document.body.classList.toggle("show-chatbot");
+        });
+    } else {
+        console.warn("Warning: Chatbot toggler (.chatbot-toggler) not found.");
+    }
+
+    if (closeChatbotBtn) {
+        closeChatbotBtn.addEventListener("click", () => {
+            document.body.classList.remove("show-chatbot");
+        });
+    }
+
+    const createChatLi = (message, className) => {
+        const chatLi = document.createElement("li");
+        chatLi.classList.add("chat", className);
+        let chatContent = (className === "outgoing") ?
+            `<p>${message}</p>` :
+            `<span class="material-symbols-outlined">smart_toy</span><p>${message}</p>`;
+        chatLi.innerHTML = chatContent;
+        return chatLi;
+    };
+
+    // Generic Bot Responses for Computer Service Website
+    const getComputerServiceBotResponse = (userMessage) => {
+        const message = userMessage.toLowerCase().trim();
+
+        if (message.includes("hello") || message.includes("hi") || message.includes("hey")) {
+            return "Hello! How can I help you with our computer repair services today?";
+        } else if (message.includes("bye") || message.includes("goodbye")) {
+            return "Goodbye! Feel free to contact us if you need anything.";
+        } else if (message.includes("help") || message.includes("support") || message.includes("problem")) {
+            return "I can help with that. Could you please describe the issue you're having with your computer?";
+        } else if (message.includes("thank you") || message.includes("thanks")) {
+            return "You're welcome! Is there anything else I can assist you with?";
+        } else if (message.includes("services") || message.includes("what do you do") || message.includes("repair options")) {
+            return "We offer virus removal, data recovery, hardware repairs, OS installation, laptop screen replacements, network setup, custom PC builds, and remote IT support. Which service are you interested in?";
+        } else if (message.includes("virus removal") || message.includes("malware")) {
+            return "We can perform a thorough scan and removal of viruses and malware to secure your system. Would you like to know more or book this service?";
+        } else if (message.includes("data recovery") || message.includes("lost files")) {
+            return "We have a high success rate in recovering lost data. It's best to bring your device for an assessment. You can find our contact information in the footer.";
+        } else if (message.includes("slow computer") || message.includes("pc tune-up") || message.includes("speed up")) {
+            return "A PC tune-up can significantly improve performance. We'll optimize settings, remove junk files, and check for issues. Interested in booking a tune-up?";
+        } else if (message.includes("hardware repair") || message.includes("broken part") || message.includes("upgrade hardware")) {
+            return "We repair and upgrade various hardware components like motherboards, RAM, hard drives, and graphics cards. What part are you having trouble with or looking to upgrade?";
+        } else if (message.includes("windows problem") || message.includes("os issue") || message.includes("operating system")) {
+            return "We can help with Windows, macOS, or Linux issues, including installations and troubleshooting. What problem are you facing with your OS?";
+        } else if (message.includes("laptop screen") || message.includes("screen broken")) {
+            return "Yes, we replace laptop screens. Please provide your laptop model for a more accurate quote or bring it in for our technicians to look at.";
+        } else if (message.includes("price") || message.includes("cost") || message.includes("how much")) {
+            return "Our repair costs depend on the specific issue and parts needed. We offer a free initial diagnosis for most issues. You can get a more detailed quote by describing your problem or bringing your device to us. Our contact details are in the footer.";
+        } else if (message.includes("location") || message.includes("address") || message.includes("where are you")) {
+            return "You can find our address and contact information in the 'Contact Us' section of our footer.";
+        } else if (message.includes("hours") || message.includes("open")) {
+            return "Our business hours are Monday to Saturday, 9 AM to 6 PM. We are closed on Sundays. You can find more details in the footer.";
+        } else {
+            return "I'm sorry, I'm not sure how to answer that. Could you try rephrasing? For specific issues, it's best to contact us directly or visit our service center.";
+        }
+    };
+
+    const handleChat = () => {
+        if (!chatInput || !chatbox) { return; }
+        const userMessageText = chatInput.value.trim();
+        if (!userMessageText) return;
+
+        const outgoingChatLi = createChatLi(userMessageText, "outgoing");
+        chatbox.appendChild(outgoingChatLi);
+        chatbox.scrollTop = chatbox.scrollHeight;
+
+        chatInput.value = "";
+        chatInput.style.height = "auto";
+
+        setTimeout(() => {
+            const botMessageText = getComputerServiceBotResponse(userMessageText);
+            const incomingChatLi = createChatLi(botMessageText, "incoming");
+            chatbox.appendChild(incomingChatLi);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }, 600);
+    };
+
+    if (sendChatBtn && chatInput && chatbox) {
+        sendChatBtn.addEventListener("click", handleChat);
+
+        chatInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                handleChat();
+            }
+        });
+        chatInput.addEventListener("input", () => {
+            chatInput.style.height = "auto";
+            chatInput.style.height = `${chatInput.scrollHeight}px`;
+            if (sendChatBtn) {
+                sendChatBtn.style.visibility = (chatInput.value.trim() !== "") ? "visible" : "hidden";
+            }
+        });
+        if (sendChatBtn) {
+            sendChatBtn.style.visibility = (chatInput && chatInput.value.trim() !== "") ? "visible" : "hidden";
+        }
+    } else {
+        if (!sendChatBtn) console.warn("Warning: Chatbot send button not found.");
+        if (!chatInput) console.warn("Warning: Chatbot input textarea not found.");
+        if (!chatbox) console.warn("Warning: Chatbot chatbox ul element not found.");
+    }
+
+    // Footer Year Update (ensure this runs for both pages if script is shared)
+    const currentYearSpanIndex = document.getElementById('current-year-index');
+    if (currentYearSpanIndex) {
+        currentYearSpanIndex.textContent = new Date().getFullYear();
+    }
+    const currentYearSpanServices = document.getElementById('current-year-services');
+    if (currentYearSpanServices) {
+        currentYearSpanServices.textContent = new Date().getFullYear();
+    }
 });
